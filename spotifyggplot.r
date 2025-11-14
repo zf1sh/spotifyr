@@ -5,8 +5,11 @@ library(tidyverse)
 library(lubridate)
 library(ggplot2)
 
+id <- ''
+secret <- ''
+
 #rewrite function to fix this nightmare of a package, DO NOT TOUCH!!!
-get_spotify_authorization_code <- function (client_id = Sys.getenv("8a7badd4858e43b0a6574ddb9910dd44"), client_secret = Sys.getenv("82f57ad4fdf4413a8980c6c9c650953c"), 
+get_spotify_authorization_code <- function (client_id = Sys.getenv(id), client_secret = Sys.getenv(secret), 
     scope = scopes()) 
 {
     endpoint <- oauth_endpoint(authorize = "https://accounts.spotify.com/authorize", 
@@ -21,8 +24,7 @@ get_spotify_authorization_code <- function (client_id = Sys.getenv("8a7badd4858e
         token$result
     }
 }
-id <- '8a7badd4858e43b0a6574ddb9910dd44'
-secret <- '82f57ad4fdf4413a8980c6c9c650953c'
+
 Sys.setenv(SPOTIFY_CLIENT_ID = id)
 Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)
 access_token <- get_spotify_access_token()
